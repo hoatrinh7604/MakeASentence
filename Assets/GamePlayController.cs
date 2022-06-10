@@ -83,49 +83,13 @@ public class GamePlayController : MonoBehaviour
 
     public void OnPressHandle(string value)
     {
-        if (currentMath == (int)math.Summation)
+        if (value == currentArr[currentUserValue])
         {
-            if(currentUserValue == 0 || currentUserValue == 2)
-            {
-                if (value == currentArr[0] || value == currentArr[2])
-                {
-                    UpdateInfo(value);
-                }
-                else
-                {
-                    GameOver();
-                }
-            }
-            else if (value == currentArr[currentUserValue])
-            {
-                UpdateInfo(value);
-            }
-            else
-            {
-                GameOver();
-            }
+            UpdateInfo(value);
         }
         else
         {
-            if (currentUserValue == 2 || currentUserValue == 4)
-            {
-                if (value == currentArr[2] || value == currentArr[4])
-                {
-                    UpdateInfo(value);
-                }
-                else
-                {
-                    GameOver();
-                }
-            }
-            else if (value == currentArr[currentUserValue])
-            {
-                UpdateInfo(value);
-            }
-            else
-            {
-                GameOver();
-            }
+            GameOver();
         }
     }
 
@@ -177,6 +141,7 @@ public class GamePlayController : MonoBehaviour
         currentUserValue = 0;
 
         listWords = listSentences[currentMath].Split(' ');
+        listWords[listWords.Length - 1] = listWords[listWords.Length - 1].Split('\r')[0];
         leng = listWords.Length;
 
         currentArr = new List<string>();
